@@ -1,5 +1,5 @@
 <?php
-$mysql = new mysqli("localhost", "user", "password", "usuarios_forlive");
+$mysql = new mysqli("localhost", "adminforliveusers", "Adminforlive1*", "usuarios_forlive");
 
 if ($mysql->connect_error) {
     die("Error de conexion: " . $mysql->connect_error);

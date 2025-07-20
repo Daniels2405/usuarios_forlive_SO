@@ -34,7 +34,7 @@ $mysql->close();
 
 <h2>Iniciar Sesión</h2>
 <form method="POST">
-    Identificador: <input type="text" name="identificador" required><br>
-    Password: <input type="password" name="password" required><br>
+    Nombre de usuario: <input type="text" name="identificador" required><br>
+    Contraseña: <input type="password" name="password" required><br>
     <input type="submit" value="Ingresar">
 </form>

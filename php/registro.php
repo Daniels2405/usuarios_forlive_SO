@@ -19,7 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssss", $identificador, $nombre, $apellidos, $hash);
 
     if ($stmt->execute()) {
-        echo "Usuario ha sido registrado correctamente.";
+        // Redirige solo si el registro fue exitoso
+        header("Location: ../html/Inicio de Seción.html");
+        exit;
     } else {
         echo "Error al registrarse: " .$stmt->error;
     }

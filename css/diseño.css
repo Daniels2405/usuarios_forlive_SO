@@ -38,7 +38,8 @@ a {
     text-decoration: underline;
 }
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="email"] {
     background: #23263a;
     border: 1px solid #384047;
     font-size: 16px;
@@ -54,7 +55,8 @@ input[type="password"] {
     transition: border 0.2s;
 }
 input[type="text"]:focus,
-input[type="password"]:focus {
+input[type="password"]:focus,
+input[type="email"]:focus {
     border: 1.5px solid #4bc970;
 }
 #button {

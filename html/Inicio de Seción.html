@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="../css/diseño.css">
 </head>
 <body>
+    <?php if (isset($_GET['error'])): ?>
+        <div style="background:#ff4d4d;color:#fff;padding:12px 18px;border-radius:6px;text-align:center;margin-bottom:18px;">
+            <?php
+            if ($_GET['error'] === 'login') {
+                echo "Usuario o contraseña incorrectos.";
+            } else if ($_GET['error'] === 'acceso') {
+                echo "Por favor, inicia sesión para acceder a la página principal.";
+            }
+            ?>
+        </div>
+    <?php endif; ?>
     <header>
         <h1>ForLive</h1>
     </header>
@@ -14,7 +25,7 @@
         <h2>Inicia de Sesión</h2>
         <p>¿No tienes cuenta aún? <a id="registro" href="Registro.html">Registrarse aquí</a></p>
         <form action="../php/login.php" method="POST">
-            Nombre de Usuario: <input type="text" name="identificador" required><br>
+            Usuario o Email: <input type="text" name="usuario" required><br>
             Contraseña: <input type="password" name="password" required><br>
             <input id="button" type="submit" value="Ingresar">
         </form>

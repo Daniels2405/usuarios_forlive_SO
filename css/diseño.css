@@ -75,3 +75,188 @@ input[type="password"]:focus {
 #button:hover {
     background-color: #43b057;
 }
+.main-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px 24px;
+    background: #23263a;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+.servicios-title {
+    margin-top: 40px;
+}
+.tarjetas-servicios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin: 40px 0;
+}
+.tarjeta {
+    background: #181a20;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    padding: 24px 18px;
+    width: 260px;
+    text-align: center;
+    color: #e0e0e0;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tarjeta:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 6px 24px rgba(76,201,112,0.15);
+}
+.tarjeta .icon {
+    font-size: 3em;
+    color: #4bc970;
+    margin-bottom: 12px;
+}
+.img-institucional {
+    display: block;
+    margin: -80px auto -80px auto;
+    max-width: 250px;      /* Mucho más pequeño para el logo */
+    width: 100%;
+    border-radius: 10px;
+}
+.img-servicio {
+    width: 100%;          /* Ocupa todo el ancho de la tarjeta */
+    height: 140px;        /* Altura fija para uniformidad */
+    margin-bottom: 16px;
+    object-fit: cover;    /* Recorta la imagen para llenar el espacio */
+    border-radius: 8px;
+    background: #23263a;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+.contacto-form {
+    margin-top: 40px;
+    background: #181a20;
+    border-radius: 10px;
+    padding: 24px 18px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+}
+.contacto-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #b0b3b8;
+}
+.contacto-form input,
+.contacto-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border-radius: 5px;
+    border: 1px solid #384047;
+    background: #23263a;
+    color: #e0e0e0;
+    font-size: 1em;
+}
+.contacto-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+.btn-contacto {
+    background: #4bc970;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 32px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.btn-contacto:hover {
+    background: #43b057;
+}
+.usuario-email {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: #b0b3b8;
+    font-size: 1em;
+    margin-bottom: 10px;
+    gap: 8px;
+}
+.usuario-email .icon {
+    color: #4bc970;
+    font-size: 1.2em;
+}
+.servicios-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+.servicios-contacto label {
+    font-weight: 400;
+    color: #b0b3b8;
+    font-size: 1em;
+}
+.navbar {
+    width: 100%;
+    background: #181a20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.navbar-logo {
+    height: 78px;
+    width: auto;
+    border-radius: 8px;
+}
+
+.navbar-link {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 5px;
+    transition: background 0.18s, color 0.18s;
+}
+
+.navbar-link:hover {
+    background: #23263a;
+    color: #4bc970;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1em;
+    color: #e0e0e0;
+    font-weight: 600;
+}
+
+.navbar-usuario {
+    color: #4bc970;
+    font-weight: 700;
+    margin-left: 4px;
+}
+
+@media (max-width: 900px) {
+    .tarjetas-servicios {
+        flex-direction: column;
+        align-items: center;
+    }
+}

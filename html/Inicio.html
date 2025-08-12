@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ForLive - Página Principal</title>
+    <link rel="stylesheet" href="../css/diseño.css">
+    <link rel="stylesheet" href="../css/icomoon/style.css">
+    <?php
+    session_start();
+    if (!isset($_SESSION['usuario_logueado'])) {
+        header("Location: Inicio de Seción.html?error=acceso");
+        exit;
+    }
+    ?>
+</head>
+<body>
+    <!-- Barra de navegación superior -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <!-- Logo pequeño junto a los botones de navegación -->
+            <img src="../img/logo_forlive.png" alt="Logo ForLive" class="navbar-logo">
+            <a href="#quienes-somos" class="navbar-link"><span class="icon icon-info"></span> Quiénes somos</a>
+            <a href="#servicios" class="navbar-link"><span class="icon icon-cogs"></span> Servicios</a>
+            <a href="#contacto" class="navbar-link"><span class="icon icon-mail"></span> Contacto</a>
+        </div>
+        <div class="navbar-right">
+            <span class="icon icon-user"></span>
+            <span class="navbar-usuario">
+                <?php echo htmlspecialchars($_SESSION['nombre'] . ' ' . $_SESSION['apellidos']); ?>
+            </span>
+        </div>
+    </nav>
+
+    <header>
+        <h1>ForLive</h1>
+    </header>
+    <div class="main-container">
+        <!-- Sección: Quiénes somos -->
+        <section id="quienes-somos">
+            <h2>¿Quiénes somos?</h2>
+            <p>
+                ForLive es una empresa líder dedicada a la venta, distribución y mantenimiento de equipos y máquinas médicas de alta tecnología. Nuestro compromiso es brindar soluciones innovadoras y confiables para hospitales, clínicas y profesionales de la salud, contribuyendo así al bienestar y la vida de las personas.
+            </p>
+            <!-- Aquí va la imagen institucional -->
+            <img class="img-institucional" src="../img/logo_forlive.png" alt="Imagen de la empresa ForLive">
+        </section>
+
+        <!-- Sección: Servicios -->
+        <section id="servicios">
+            <h2 class="servicios-title">Nuestros Servicios</h2>
+            <div class="tarjetas-servicios">
+                <div class="tarjeta">
+                    <span class="icon icon-stethoscope"></span>
+                    <!-- Aquí va la imagen de Venta de Equipos Médicos -->
+                    <img class="img-servicio" src="../img/equipomedico1.jpeg" alt="Venta de Equipos Médicos">
+                    <h3>Venta de Equipos Médicos</h3>
+                    <p>Ofrecemos una amplia gama de equipos médicos de última generación para hospitales y clínicas.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icon icon-cogs"></span>
+                    <!-- Aquí va la imagen de Mantenimiento y Reparación -->
+                    <img class="img-servicio" src="../img/mantenimiento_reparacion.jpeg" alt="Mantenimiento y Reparación">
+                    <h3>Mantenimiento y Reparación</h3>
+                    <p>Servicio técnico especializado para el mantenimiento preventivo y correctivo de tus equipos.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icon icon-truck"></span>
+                    <!-- Aquí va la imagen de Distribución y Entrega -->
+                    <img class="img-servicio" src="../img/entrega.webp" alt="Distribución y Entrega">
+                    <h3>Distribución y Entrega</h3>
+                    <p>Entregamos tus equipos en tiempo y forma, asegurando el mejor cuidado durante el traslado.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icon icon-users"></span>
+                    <!-- Aquí va la imagen de Capacitación -->
+                    <img class="img-servicio" src="../img/capacitaciones.avif" alt="Capacitación">
+                    <h3>Capacitación</h3>
+                    <p>Capacitamos a tu personal en el uso y manejo seguro de los equipos médicos adquiridos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Formulario de contacto -->
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <form class="contacto-form" action="../php/contacto.php" method="POST">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required>
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" required>
+                <label>¿Sobre qué servicio desea consultar?</label>
+                <div class="servicios-contacto">
+                    <label><input type="checkbox" name="servicios[]" value="Venta de Equipos Médicos"> Venta de Equipos Médicos</label>
+                    <label><input type="checkbox" name="servicios[]" value="Mantenimiento y Reparación"> Mantenimiento y Reparación</label>
+                    <label><input type="checkbox" name="servicios[]" value="Distribución y Entrega"> Distribución y Entrega</label>
+                    <label><input type="checkbox" name="servicios[]" value="Capacitación"> Capacitación</label>
+                </div>
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" required></textarea>
+                <button class="btn-contacto" type="submit">Enviar</button>
+            </form>
+        </section>
+
+        <!-- Mostrar el correo electrónico del usuario si está disponible -->
+        <?php if (isset($_SESSION['email'])): ?>
+            <div class="usuario-email">
+                <span class="icon icon-mail"></span>
+                <span><?php echo htmlspecialchars($_SESSION['email']); ?></span>
+            </div>
+        <?php endif; ?>
+    </div>
+</body>
+</html>

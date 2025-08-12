@@ -9,18 +9,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $identificador = $_POST["identificador"];
     $nombre = $_POST["nombre"];
     $apellidos = $_POST["apellidos"];
-    $email = $_POST["email"];
+    $email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
     $password = $_POST["password"];
 
-    //Se encripta el password 
+    if (!$email) {
+        echo "Correo electrónico no válido.";
+        exit;
+    }
+
     $hash = password_hash($password, PASSWORD_DEFAULT);
 
-    //Se inserta el usuario (orden de columnas: identificador, nombre, apellidos, email, password)
     $stmt = $mysql->prepare("INSERT INTO usuarios (identificador, nombre, apellidos, email, password) VALUES (?,?,?,?,?)");
     $stmt->bind_param("sssss", $identificador, $nombre, $apellidos, $email, $hash);
 
     if ($stmt->execute()) {
-        // Redirige solo si el registro fue exitoso
         header("Location: ../html/Inicio de Seción.html");
         exit;
     } else {

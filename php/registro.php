@@ -7,17 +7,17 @@ if ($mysql->connect_error) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $identificador = $_POST["identificador"];
-    $email = $_POST["email"];
     $nombre = $_POST["nombre"];
     $apellidos = $_POST["apellidos"];
+    $email = $_POST["email"];
     $password = $_POST["password"];
 
     //Se encripta el password 
     $hash = password_hash($password, PASSWORD_DEFAULT);
 
-    //Se inserta el usuario (agregando email)
-    $stmt = $mysql->prepare("INSERT INTO usuarios (identificador, email, nombre, apellidos, password) VALUES (?,?,?,?,?)");
-    $stmt->bind_param("sssss", $identificador, $email, $nombre, $apellidos, $hash);
+    //Se inserta el usuario (orden de columnas: identificador, nombre, apellidos, email, password)
+    $stmt = $mysql->prepare("INSERT INTO usuarios (identificador, nombre, apellidos, email, password) VALUES (?,?,?,?,?)");
+    $stmt->bind_param("sssss", $identificador, $nombre, $apellidos, $email, $hash);
 
     if ($stmt->execute()) {
         // Redirige solo si el registro fue exitoso
@@ -35,9 +35,9 @@ $mysql->close();
 <h2>Registro de Usuarios de ForLive</h2>
 <form method="POST">
     Identificador: <input type="text" name="identificador" required><br>
-    Email: <input type="email" name="email" required><br>
     Nombre: <input type="text" name="nombre" required><br>
     Apellidos: <input type="text" name="apellidos" required><br>
+    Email: <input type="email" name="email" required><br>
     Password: <input type="password" name="password" required><br>
     <input type="submit" value="Registrar">
 </form>

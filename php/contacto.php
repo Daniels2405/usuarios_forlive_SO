@@ -13,13 +13,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $servicios_texto = $servicios ? implode(", ", array_map('htmlspecialchars', $servicios)) : "No especificado";
 
-    $to = "dbarrientos00383@ufide.ac.cr";
+    $to = "dn.barrientossalas@gmail.com";
     $subject = "Nuevo mensaje de contacto de ForLive";
     $body = "Nombre: $nombre\nCorreo: $email\nServicios de interés: $servicios_texto\nMensaje:\n$mensaje";
     $headers = "From: noreply@localhost\r\nReply-To: $email\r\n";
 
     if (mail($to, $subject, $body, $headers)) {
-        echo "<script>alert('Mensaje enviado correctamente.');window.location.href='../html/Inicio.html';</script>";
+        header("Location: ../html/Gracias.html");
+        exit;
     } else {
         echo "<script>alert('Error al enviar el mensaje.');window.history.back();</script>";
     }
